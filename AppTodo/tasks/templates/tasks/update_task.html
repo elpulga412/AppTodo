@@ -1,0 +1,18 @@
+{% extends "tasks/index.html" %}
+
+{% block content %}
+	<div style="text-align: center"><h3>Update Task</h3></div>
+	<hr>
+	<form method="POST" action="">
+		{% csrf_token %}
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="basic-addon1">Title</span>
+			{{ form.title }}
+		</div>
+		<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1" style="margin-right:10%">Complete</span>
+				{{ form.complete }}
+		</div>
+		<input class="btn btn-primary" type="submit" value="Submit" style="width:100%">
+	</form>
+{% endblock content %}
