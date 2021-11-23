@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <style>
+      .login--wrapper {
+        display: flex;
+        align-items: center;
+        height: 80vh;
+        justify-content: center;
+      }
+
+      .form {
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-wrapper row justify-content-center">
+        {% if page == 'login' %}
+        <form class="form" method="POST">
+            {% csrf_token %}
+          <h1>Login</h1>
+          <h4>Login to photo and share with your friends</h4>
+          <div class="mb-3">
+            <label for="exampleInputEmail" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              id="exampleInputEmail"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <p>
+            Don't have an account <a href="{% url 'register' %}">Register</a>
+          </p>
+        </form>
+        {% endif %}
+        {% if page == 'register' %}
+        <form method="POST">
+            {% csrf_token %}
+            <h3>Register</h3>
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
